@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +15,7 @@ public class Equipo {
     
     public Equipo(String nombre) {
         this.nombre = nombre;
-        this.enfrentamientos = enfrentamientos;
+        this.enfrentamientos = new ArrayList<Enfrentamiento>();
         this.partidosPerdidos= 0;
     }
     
@@ -22,6 +23,9 @@ public class Equipo {
         partidosPerdidos++; 
     }
     
+    public boolean ganador(){
+        return partidosPerdidos==0;
+    }
     public boolean eliminado(){
         return partidosPerdidos>=2;
     }
@@ -36,6 +40,11 @@ public class Equipo {
     public List<Enfrentamiento> getEnfrentamientos() {
         return enfrentamientos;
     }
+
+    public int getPartidosPerdidos() {
+        return partidosPerdidos;
+    }
+    
     
     public void agregarUnEnfrentamiento(Enfrentamiento e){
         enfrentamientos.add(e);
