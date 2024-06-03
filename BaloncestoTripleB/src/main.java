@@ -38,14 +38,14 @@ public class main {
         System.out.println("Derrotas de b " + b.getPartidosPerdidos());
         System.out.println("Derrotas de c " + c.getPartidosPerdidos());
         System.out.println("Derrotas de d " + d.getPartidosPerdidos());
+       
         
-        System.out.println("La raiz ");
+       a.verEnfrentamientos();
         
-        torneo.buscarEquipo(torneo.getRaiz(), d);
-        torneo.buscarEquipo(torneo.getRaiz(), c);
-        torneo.buscarEquipo(torneo.getRaiz(), a);
-        torneo.buscarEquipo(torneo.getRaiz(), b);
-        torneo.buscarEquipo(torneo.getRaiz(), e);
+        
     }
+
+    
+    
     
 }

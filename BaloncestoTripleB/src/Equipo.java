@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 
@@ -49,5 +50,52 @@ public class Equipo {
     public void agregarUnEnfrentamiento(Enfrentamiento e){
         enfrentamientos.add(e);
     }
+    
+    public void verEnfrentamientos() {
+    for (Enfrentamiento e : enfrentamientos) {
+        System.out.print("El equipo " + e.getEquipo1().getNombre() + " se enfrentó al equipo " + e.getEquipo2().getNombre());
+        if (e.getGanador() != null) {
+            System.out.println(" y el ganador fue " + e.getGanador().getNombre());
+        } else {
+            System.out.println(" y el enfrentamiento no tiene un ganador registrado");
+        }
+    }
+}
+
+    
+
+    @Override
+    public String toString() {
+        return "Equipo{" + "nombre=" + nombre + ", partidosPerdidos=" + partidosPerdidos + ", enfrentamientos=" + enfrentamientos + '}';
+    }
+    
+    
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Equipo other = (Equipo) obj;
+        return Objects.equals(this.nombre, other.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre);
+    }
+
+
+    
+    
+    
+    
+    
     
 }

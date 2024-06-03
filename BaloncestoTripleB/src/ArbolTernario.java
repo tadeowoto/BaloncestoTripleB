@@ -65,31 +65,41 @@ public class ArbolTernario {
       
     }
     
-    public void buscarEquipo(Nodo raiz, Equipo e) {
+//        public boolean buscarEquipo(Nodo raiz, Equipo e) {
+//        if (raiz == null) {
+//            return false;
+//        }
+//        if (e.equals(raiz.getEquipo())) {
+//            System.out.println("El equipo " + e.getNombre() + " ha sido encontrado");
+//            return true;
+//        }
+//        if (e.getPartidosPerdidos() == 0) {
+//            return buscarEquipo(raiz.getGanadores(), e);
+//        } else if (e.getPartidosPerdidos() == 1) {
+//            return buscarEquipo(raiz.getSegundasOp(), e);
+//        } else {
+//            return buscarEquipo(raiz.getEliminados(), e);
+//        }
+//    }
     
+        public Equipo buscarEquipo(Nodo raiz, Equipo e) {
+        if (raiz == null) {
+            return null;
+        }
 
-    System.out.println("Nodo actual: " + raiz.getEquipo().getNombre());
+        if (e.equals(raiz.getEquipo())) {
+            return raiz.getEquipo();
+        }
 
-    if (e.equals(raiz.getEquipo())) {
-        System.out.println("El equipo " + e.getNombre() + " ha sido encontrado");
-        return;
-    }
+        Equipo encontrado = buscarEquipo(raiz.getGanadores(), e);
+        if (encontrado == null) {
+            encontrado = buscarEquipo(raiz.getSegundasOp(), e);
+        }
+        if (encontrado == null) {
+            encontrado = buscarEquipo(raiz.getEliminados(), e);
+        }
 
-    if (e.getPartidosPerdidos() == 0) {
-        System.out.println("Buscando en la rama de ganadores");
-        buscarEquipo(raiz.getGanadores(), e);
-    } else if (e.getPartidosPerdidos() == 1) {
-        System.out.println("Buscando en la rama de segundas oportunidades");
-        buscarEquipo(raiz.getSegundasOp(), e);
-    } else {
-        System.out.println("Buscando en la rama de eliminados");
-        buscarEquipo(raiz.getEliminados(), e);
+        return encontrado;
     }
-    
-    if (raiz == null) {
-        System.out.println("No se encontró");
-        return;
-    }
-}
     
 }
