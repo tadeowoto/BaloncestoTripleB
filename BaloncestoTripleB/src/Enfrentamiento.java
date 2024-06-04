@@ -1,8 +1,6 @@
 
-
 public class Enfrentamiento {
-    
-    // la idea es en esta clase registrar un enfrentamiento, es decir, los 2 equipos que se enfrentaron y el ganador y perdedor
+
     
     private Equipo equipo1;
     private Equipo equipo2;
@@ -51,41 +49,54 @@ public class Enfrentamiento {
 
     @Override
     public String toString() {
-        return "Equipo " + equipo1.getNombre() + " vs equipo " + equipo2.getNombre() + ", ganador= " + ganador.getNombre();
+        String resultado = "Equipo " + equipo1.getNombre() + " vs equipo " + equipo2.getNombre();
+        if (ganador != null) {
+            resultado += ", ganador= " + ganador.getNombre();
+        } else {
+            resultado += ", ganador no registrado";
+        }
+        return resultado;
     }
-    
-    
-    public Equipo disputarPartido(Equipo e1, Equipo e2){
-        
-        int num = (int) ((Math.random()*10) +1); //numero aleatorio entre 1 y 10
-        
-        //basicamente devuelve aleatoriamente el encuentro entre 2 equipos
-        if(e1.eliminado()){
-            System.out.println("El equipo " + e1.getNombre() + " está eliminado, no puede jugar");
+
+    public Equipo disputarPartido(Equipo e1, Equipo e2) {
+        System.out.println("=========================================");
+        System.out.println("            Partido en Curso!           ");
+        System.out.println("=========================================");
+        System.out.println("  Equipo 1: " + e1.getNombre());
+        System.out.println("  Equipo 2: " + e2.getNombre());
+        System.out.println("-----------------------------------------");
+
+        int num = (int) ((Math.random() * 10) + 1); // número aleatorio entre 1 y 10
+
+        if (e1.eliminado()) {
+            System.out.println("  [ELIMINADO] El equipo " + e1.getNombre() + " está eliminado, no puede jugar.");
+            System.out.println("=========================================");
             return null;
         } else if (e2.eliminado()) {
-            System.out.println("El equipo " + e2.getNombre() + " está eliminado, no puede jugar");
+            System.out.println("  [ELIMINADO] El equipo " + e2.getNombre() + " está eliminado, no puede jugar.");
+            System.out.println("=========================================");
             return null;
-        } else{
+        } else {
             if (num % 2 == 0) {
-            System.out.println("GANO EL EQUIPO 1");
-            e2.registrarDerrota();
-            ganador = e1;
-            perdedor = e2;
-            
-        }else{
-            System.out.println("GANO EL EQUIPO 2");
-            e1.registrarDerrota();
-            ganador = e2;
-            perdedor = e1;
-            
+                System.out.println("  Resultado: GANO EL EQUIPO 1!");
+                e2.registrarDerrota();
+                ganador = e1;
+                perdedor = e2;
+            } else {
+                System.out.println("  Resultado: GANO EL EQUIPO 2!");
+                e1.registrarDerrota();
+                ganador = e2;
+                perdedor = e1;
+            }
         }
-        }
+        System.out.println("-----------------------------------------");
+        System.out.println("  Ganador: " + ganador.getNombre());
+        System.out.println("  Perdedor: " + perdedor.getNombre());
+        System.out.println("=========================================");
+
         return ganador;
-        
-        
     }
-   
+
 }
     
     

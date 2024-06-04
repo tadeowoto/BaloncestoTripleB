@@ -8,10 +8,9 @@ import java.util.Objects;
 public class Equipo {
     //esta clase representa un equipo con los enfrentamientos que tiene
     private String nombre;
-    private int partidosPerdidos; //agregue esto para verificar cuantas derrotas tiene un equipo, asi mas tarde podemos verificar a que rama mandarlos
+    private int partidosPerdidos;
     private List <Enfrentamiento> enfrentamientos;
-    //los enfrentamientos deberian ser solo 3
-    //ver si agregar boolean de la instancia de cada equipo (no creo)
+    
     
     
     public Equipo(String nombre) {
@@ -50,24 +49,34 @@ public class Equipo {
     public void agregarUnEnfrentamiento(Enfrentamiento e){
         enfrentamientos.add(e);
     }
-    
+
     public void verEnfrentamientos() {
+    System.out.println("=========================================");
+    System.out.println("          Historial de Enfrentamientos   ");
+    System.out.println("=========================================");
+    
     for (Enfrentamiento e : enfrentamientos) {
-        System.out.print("El equipo " + e.getEquipo1().getNombre() + " se enfrentó al equipo " + e.getEquipo2().getNombre());
+        System.out.println("-----------------------------------------");
+        System.out.println("  Equipo 1: " + e.getEquipo1().getNombre());
+        System.out.println("  Equipo 2: " + e.getEquipo2().getNombre());
         if (e.getGanador() != null) {
-            System.out.println(" y el ganador fue " + e.getGanador().getNombre());
+            System.out.println("  Ganador : " + e.getGanador().getNombre());
         } else {
-            System.out.println(" y el enfrentamiento no tiene un ganador registrado");
+            System.out.println("  Resultado: Enfrentamiento sin ganador registrado");
         }
+        System.out.println("-----------------------------------------");
     }
+    
+    System.out.println("=========================================");
 }
+
 
     
 
     @Override
-    public String toString() {
-        return "Equipo" + nombre + ", partidosPerdidos=" + partidosPerdidos + ", enfrentamientos=" + enfrentamientos;
-    }
+   public String toString() {
+    return "Equipo: " + nombre;
+}
     
     
     

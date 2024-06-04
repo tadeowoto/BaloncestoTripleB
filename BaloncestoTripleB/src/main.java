@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 
-/**
- *
- * @author tDev
- */
 public class main {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
-        Equipo a = new Equipo("a");
-        Equipo b = new Equipo("b");
-        Equipo c = new Equipo("c");
-        Equipo d = new Equipo("d");
-        Equipo e = new Equipo("e");
+        
+        Equipo a = new Equipo("Lakers");
+        Equipo b = new Equipo("Spurs");
+        Equipo c = new Equipo("Denver Nuggets");
+        Equipo d = new Equipo("Miami Heat");
+        Equipo e = new Equipo("San Lorenzo");
+        System.out.println("=========================================");
+        System.out.println("            TorneoB en Curso!           ");
+        System.out.println("=========================================");
+        
+
         
         ArbolTernario torneo = new ArbolTernario();
         //primera ronda
@@ -34,16 +29,19 @@ public class main {
         
         
         
-        System.out.println("Derrotas de a " + a.getPartidosPerdidos());
-        System.out.println("Derrotas de b " + b.getPartidosPerdidos());
-        System.out.println("Derrotas de c " + c.getPartidosPerdidos());
-        System.out.println("Derrotas de d " + d.getPartidosPerdidos());
+        System.out.println("Derrotas de "+a.getNombre() +" " + a.getPartidosPerdidos());
+        System.out.println("Derrotas de "+b.getNombre() +" " + b.getPartidosPerdidos());
+        System.out.println("Derrotas de "+c.getNombre()+ " " + c.getPartidosPerdidos());
+        System.out.println("Derrotas de "+d.getNombre()+ " " + d.getPartidosPerdidos());
        
         
        a.verEnfrentamientos();
         System.out.println(torneo.buscarEquipo(torneo.getRaiz(), b));
         System.out.println(torneo.buscarEquipo(torneo.getRaiz(), e));
         torneo.mostrarHistorialTorneo();
+        
+        
+        torneo.encontrarGanador(torneo.getRaiz());
         
     }
 

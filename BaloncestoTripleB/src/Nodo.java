@@ -3,10 +3,10 @@
 public class Nodo {
     
     
-    private Equipo equipo; //valor del nodo, asi el arbol es de equipos
-    private Nodo ganadores; //puntero del lado izq, ganadores
-    private Nodo segundasOp; //puntero del medio
-    private Nodo eliminados; //puntero del lado derecho
+    private Equipo equipo;
+    private Nodo ganadores; 
+    private Nodo segundasOp; 
+    private Nodo eliminados; 
     
     
     public Nodo(){
@@ -16,7 +16,7 @@ public class Nodo {
         this.equipo = equipo;
         this.ganadores = null;
         this.segundasOp = null;
-        this.eliminados = null; //las direcciones arrancan en null
+        this.eliminados = null; 
     }
     
     
