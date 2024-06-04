@@ -41,7 +41,9 @@ public class main {
        
         
        a.verEnfrentamientos();
-        
+        System.out.println(torneo.buscarEquipo(torneo.getRaiz(), b));
+        System.out.println(torneo.buscarEquipo(torneo.getRaiz(), e));
+        torneo.mostrarHistorialTorneo();
         
     }
 

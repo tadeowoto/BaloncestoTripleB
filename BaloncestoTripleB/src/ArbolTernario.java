@@ -1,12 +1,17 @@
 
+import java.util.ArrayList;
+
+
 
 public class ArbolTernario {
     //se podría guardar los enfrentamientos del torneo en un arraylist aquí
     //Después imprimir final de torneo con campeón
     private Nodo raiz;
+    private ArrayList<Enfrentamiento> historial = new ArrayList<Enfrentamiento>();
 
     public ArbolTernario() {
-        this.raiz = null;
+        Equipo demo = new Equipo("Torneo");
+        this.raiz = new Nodo(demo);
     }
 
     public Nodo getRaiz() {
@@ -17,10 +22,7 @@ public class ArbolTernario {
     
     public Nodo insertarNodo(Nodo raiz, Equipo e){ //este metodo va a ser el encargado de mandar los equipos a las ramas
     
-        if (raiz == null) {
-            raiz = new Nodo(e); // aca estariamos creando la raiz
-            return raiz;
-        }
+        
         if(e.ganador()){
             if(raiz.getGanadores() == null){
                 
@@ -58,6 +60,7 @@ public class ArbolTernario {
         //llamar a insertarNodo y en insertarNodo verificar las derrotas y mandarlo a la rama correspondiente    
         e1.agregarUnEnfrentamiento(partido);
         e2.agregarUnEnfrentamiento(partido);
+        historial.add(partido);
         if(partido.getGanador() != null){
             System.out.println("Ganador: " + partido.getGanador().getNombre());
             System.out.println("Perdedor: " + partido.getPerdedor().getNombre());
@@ -65,22 +68,7 @@ public class ArbolTernario {
       
     }
     
-//        public boolean buscarEquipo(Nodo raiz, Equipo e) {
-//        if (raiz == null) {
-//            return false;
-//        }
-//        if (e.equals(raiz.getEquipo())) {
-//            System.out.println("El equipo " + e.getNombre() + " ha sido encontrado");
-//            return true;
-//        }
-//        if (e.getPartidosPerdidos() == 0) {
-//            return buscarEquipo(raiz.getGanadores(), e);
-//        } else if (e.getPartidosPerdidos() == 1) {
-//            return buscarEquipo(raiz.getSegundasOp(), e);
-//        } else {
-//            return buscarEquipo(raiz.getEliminados(), e);
-//        }
-//    }
+
     
         public Equipo buscarEquipo(Nodo raiz, Equipo e) {
         if (raiz == null) {
@@ -98,8 +86,18 @@ public class ArbolTernario {
         if (encontrado == null) {
             encontrado = buscarEquipo(raiz.getEliminados(), e);
         }
-
+        
         return encontrado;
+    }
+    
+    public void mostrarHistorialTorneo(){
+        for (Enfrentamiento enfrentamiento : historial) {
+            System.out.println(enfrentamiento.getEquipo1().getNombre() + " vs " + enfrentamiento.getEquipo2().getNombre());
+            if(enfrentamiento.getGanador() != null){
+                System.out.println("***Ganador***" + enfrentamiento.getGanador().getNombre());
+            }
+            
+        }
     }
     
 }

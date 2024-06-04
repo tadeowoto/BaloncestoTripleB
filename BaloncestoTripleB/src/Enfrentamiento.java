@@ -48,6 +48,11 @@ public class Enfrentamiento {
     public void setPerdedor(Equipo perdedor) {
         this.perdedor = perdedor;
     }
+
+    @Override
+    public String toString() {
+        return "Equipo " + equipo1.getNombre() + " vs equipo " + equipo2.getNombre() + ", ganador= " + ganador.getNombre();
+    }
     
     
     public Equipo disputarPartido(Equipo e1, Equipo e2){
